@@ -1,5 +1,6 @@
 import express from "express";
 import { ProductController } from "./productController";
+import mongoose from "mongoose";
 
 const app = express();
 app.use(express.json());
@@ -32,6 +33,11 @@ app.delete(
   "/products/:id",
   productController.deleteProduct.bind(productController),
 );
+
+// mongoose
+//   .connect("")
+//   .then(() => {})
+//   .catch(() => {});
 
 app.listen(3003, () => {
   console.log("Product service is running on 3003");
