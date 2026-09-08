@@ -23,7 +23,7 @@ export class ProductController {
         req.body,
       );
       if (!product) {
-        return res.status(500).json({ message: "Product not found! " });
+        return res.status(204).json({ message: "Product not found! " });
       }
       return res.status(200).json(product);
     } catch (error) {
@@ -37,6 +37,7 @@ export class ProductController {
       if (!success) {
         return res.status(204).json({ message: "Product not found!" });
       }
+      return res.status(200).json({ message: "Product deleted succesfully!" });
     } catch (error) {
       return res.status(500).json({ message: "Error deleting product!" });
     }
@@ -46,9 +47,9 @@ export class ProductController {
     try {
       const product = await this.productService.getProductById(req.params.id);
       if (!product) {
-        return res.status(500).json({ message: "Product not found!" });
+        return res.status(204).json({ message: "Product not found!" });
       }
-      return res.status(204).json(product);
+      return res.status(200).json(product);
     } catch (error) {
       return res.status(500).json({ message: "Error fetching product!" });
     }
@@ -58,9 +59,9 @@ export class ProductController {
     try {
       const products = await this.productService.getAllProducts();
       if (!products) {
-        return res.status(500).json({ message: "Products not found!" });
+        return res.status(204).json({ message: "Products not found!" });
       }
-      return res.status(204).json(products);
+      return res.status(200).json(products);
     } catch (error) {
       return res.status(500).json({ message: "Error fetching products!" });
     }
