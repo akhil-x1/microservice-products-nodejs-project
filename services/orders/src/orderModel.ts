@@ -5,7 +5,7 @@ export class OrderEntity extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column()
+  @Column({ type: "varchar" })
   userId!: string;
 
   @Column("simple-array")
@@ -14,6 +14,6 @@ export class OrderEntity extends BaseEntity {
   @Column("decimal")
   total!: number;
 
-  @Column()
-  status!: string!;
+  @Column({ type: "varchar" })
+  status!: string;
 }

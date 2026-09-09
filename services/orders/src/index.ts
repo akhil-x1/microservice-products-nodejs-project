@@ -1,16 +1,16 @@
+import "reflect-metadata";
+
 import express from "express";
 import { OrderController } from "./orderController";
 import { OrderDataSource } from "./data-source";
+import { errorHandler } from "./middleware/errorHandler";
+import { logger } from "./middleware/logger";
 
 const app = express();
 app.use(express.json());
 
-app.use(() => {
-  console.log("Error handler");
-});
-app.use(() => {
-  console.log("Logger");
-});
+app.use(errorHandler);
+app.use(logger);
 
 const orderController = new OrderController();
 

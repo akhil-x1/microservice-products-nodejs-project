@@ -3,20 +3,12 @@ import { OrderEntity } from "./orderModel";
 
 export const OrderDataSource = new DataSource({
   type: "postgres",
-  host: "postgres",
+  host: "localhost",
   port: 5432,
-  username: "my_username",
+  username: "akhilxavierpaul",
   password: "my_password",
-  database: "orders_db",
+  database: "my_app_db",
   entities: [OrderEntity],
   synchronize: true,
   dropSchema: false,
 });
-
-OrderDataSource.initialize()
-  .then(() => {
-    console.log("Connected to postgres sql for order service");
-  })
-  .catch(() => {
-    console.log("Error during data source initialization!");
-  });
