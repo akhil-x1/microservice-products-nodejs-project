@@ -6,8 +6,8 @@ export class OrderService {
 
   async createOrder(order: Partial<OrderEntity>) {
     try {
-      const newOrder = this.orderRepository.create(order);
-      this.orderRepository.save(newOrder);
+      const newOrder = await this.orderRepository.create(order);
+      await this.orderRepository.save(newOrder);
       return newOrder;
     } catch (error) {
       return null;
